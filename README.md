@@ -11,8 +11,5 @@ Step by step to run :
 - Do the 'npm start' 
 
 
-
-
-
-https://user-images.githubusercontent.com/107775878/235335330-97a81d5e-c950-4e7e-a53b-268b2e69d1ec.mov
+https://user-images.githubusercontent.com/107775878/235336525-a0553c4c-ec62-4296-aa08-9df3b4a3e0a8.mov
 
