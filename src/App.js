@@ -65,8 +65,6 @@ const App = () => {
   const filteredTitles = history.filter((prev) => prev.title === title);
   const uniqueTitles = Array.from(new Set(history.map((prev) => prev.title)));
 
-  console.log(uniqueTitles);
-
   return (
     <div className="app">
       <section className="side-bar">
