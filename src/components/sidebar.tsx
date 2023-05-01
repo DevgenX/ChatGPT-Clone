@@ -1,4 +1,16 @@
-const Sidebar = ({ handleCreateChat, uniqueTitles, handleClick }) => {
+import React, { FC } from "react";
+
+interface SidebarProps {
+  handleCreateChat: () => void;
+  uniqueTitles: string[] | undefined;
+  handleClick: (title: string) => void;
+}
+
+const Sidebar: FC<SidebarProps> = ({
+  handleCreateChat,
+  uniqueTitles,
+  handleClick,
+}) => {
   return (
     <div>
       <section className="side-bar">

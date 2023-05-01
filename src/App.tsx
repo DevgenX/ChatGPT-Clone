@@ -3,30 +3,40 @@ import Input from "./components/input-box";
 import Sidebar from "./components/sidebar";
 import FeedBox from "./components/feed-box";
 
+interface HistoryContent {
+  title: string;
+  role: string;
+  content: string;
+}
+
 const App = () => {
-  const [input, setInput] = useState("");
-  const [message, setMessage] = useState("");
-  const [history, setHistory] = useState([]);
+  const [input, setInput] = useState<string>("");
+  const [message, setMessage] = useState<HistoryContent>({
+    title: "",
+    role: "",
+    content: "",
+  });
+  const [history, setHistory] = useState<HistoryContent[]>([]);
   const [title, setTitle] = useState("");
 
   const handleCreateChat = () => {
-    setMessage("");
+    setMessage({ title: "", role: "", content: "" });
     setInput("");
     setTitle("");
   };
 
-  const handleClick = (titles) => {
+  const handleClick = (titles: string) => {
     setTitle(titles);
-    setMessage("");
+    setMessage({ title: "", role: "", content: "" });
     setInput("");
   };
 
   useEffect(() => {
-    if (!title && input && message) {
+    if (!title && input && message.content) {
       setTitle(input);
     }
 
-    if (title && input && message) {
+    if (title && input && message.content) {
       setHistory((prev) => [
         ...prev,
         {

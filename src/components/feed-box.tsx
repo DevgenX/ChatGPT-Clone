@@ -1,4 +1,11 @@
-const FeedBox = ({ title, filteredTitles }) => {
+import { FC } from "react";
+
+interface FeedBoxProps {
+  title: string;
+  filteredTitles: { role: string; content: string }[];
+}
+
+const FeedBox: FC<FeedBoxProps> = ({ title, filteredTitles }) => {
   return (
     <>
       {!title && <h1>Idiot GPT</h1>}

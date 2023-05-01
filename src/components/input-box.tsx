@@ -1,4 +1,18 @@
-const Input = ({ input, setInput, setMessage }) => {
+import { FC, memo } from "react";
+
+interface HistoryContent {
+  title: string;
+  role: string;
+  content: string;
+}
+
+interface InputProps {
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  setMessage: React.Dispatch<React.SetStateAction<HistoryContent>>;
+}
+
+const Input: FC<InputProps> = ({ input, setInput, setMessage }) => {
   const getMessages = async () => {
     const config = {
       method: "POST",
@@ -14,6 +28,8 @@ const Input = ({ input, setInput, setMessage }) => {
       const response = await fetch("http://localhost:8000/completions", config);
 
       const data = await response.json();
+
+      console.log(data);
 
       setMessage(data.choices[0].message);
     } catch (err) {
@@ -41,4 +57,4 @@ const Input = ({ input, setInput, setMessage }) => {
     </>
   );
 };
-export default Input;
+export default memo(Input);

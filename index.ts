@@ -1,16 +1,18 @@
-const fetch = require("node-fetch");
-const PORT = 8000;
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-const app = express();
+import express, { Application, Request, Response } from "express";
+import fetch from "node-fetch";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+
+const app: Application = express();
+const PORT: number = 8000;
 
 app.use(express.json());
 app.use(cors());
 
-const API_KEY = process.env.API_KEY;
+const API_KEY: string = process.env.API_KEY || "";
 
-app.post("/completions", async (req, res) => {
+app.post("/completions", async (req: Request, res: Response) => {
   const config = {
     method: "POST",
     headers: {
@@ -39,6 +41,7 @@ app.post("/completions", async (req, res) => {
     res.send(data);
   } catch (err) {
     console.log(err);
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
